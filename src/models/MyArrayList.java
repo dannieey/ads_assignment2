@@ -1,8 +1,11 @@
 package models;
 
+import java.util.Iterator;
+
 public class MyArrayList<T> implements MyList<T>{
     private Object[] elements;
     private int size;
+
 
     public MyArrayList(){
         elements=new Object[10];
@@ -29,18 +32,20 @@ public class MyArrayList<T> implements MyList<T>{
 
     }
 
+    @Override
     public void add(T element){
         checkCapacity();
         elements[size++]=element;
     }
 
+    @Override
     public void set(int index, T element){
         checkIndex(index);
         elements[index]= element;
 
     }
 
-
+    @Override
     public void add(int index, T element){
         checkIndex(index);
         checkCapacity();
@@ -51,6 +56,7 @@ public class MyArrayList<T> implements MyList<T>{
         size++;
     }
 
+    @Override
     public void addFirst(T element){
         checkCapacity();
         for(int i=size; i>0; i--){
@@ -59,50 +65,59 @@ public class MyArrayList<T> implements MyList<T>{
         elements[0]=element;
         size++;
     }
+
+    @Override
     public void addLast(T element){
         checkCapacity();
         elements[size]=element;
         size++;
 
     }
+
+    @Override
     public T get(int index){
         checkIndex(index);
         return (T) elements[index];
 
     }
+
+    @Override
     public T getFirst(){
         return (T)elements[0];
     }
+
+    @Override
     public T getLast(){
 
         return (T) elements[size-1];
     }
 
 
-
-    public T remove(int index){
+    @Override
+    public void remove(int index){
         checkIndex(index);
         //1 2 3 4 5 /--> 1 2 4 5
         for(int i=index; i<size-1; i++){
             elements[i]=elements[i+1];
         }
         elements[--size]=null;
-        return null;
     }
 
-    public T removeFirst(){
+    @Override
+    public void removeFirst(){
         for(int i=0; i<size-1; i++){
             elements[i]=elements[i+1];
         }
-        return null;
     }
-    public T removeLast(){
+
+    @Override
+    public void removeLast(){
         checkCapacity();
         elements[size-1]=null;
-        return null;
     }
 
 
+    @Override
     public void sort(){
         for(int i=0; i<size-1; i++){
             for(int j=i+1; j<size; j++){
@@ -120,6 +135,7 @@ public class MyArrayList<T> implements MyList<T>{
 
 
 
+    @Override
     public int indexOf(Object object) {
         for(int i=0; i<size; i++){
             if(elements[i].equals(object)){
@@ -129,6 +145,7 @@ public class MyArrayList<T> implements MyList<T>{
         return -1;
     }
 
+    @Override
     public int lastIndexOf(Object object) {
         for(int i=size-1; i>=0; i--){
             if(elements[i].equals(object)){
@@ -137,9 +154,14 @@ public class MyArrayList<T> implements MyList<T>{
         }
         return -1;
     }
+
+
+    @Override
     public boolean exists(Object object){
         return indexOf(object)!=-1;
     }
+
+    @Override
     public Object[] toArray(){
         Object[] temp =new Object[size];
         for(int i=0; i<size; i++){
@@ -148,16 +170,21 @@ public class MyArrayList<T> implements MyList<T>{
         return temp;
     }
 
+    @Override
     public void clear(){
         elements=new Object[10];
         size=0;
     }
+
+
+    @Override
     public int size(){
         return size;
     }
 
 
-
-
-
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
 }

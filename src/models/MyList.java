@@ -1,5 +1,5 @@
 package models;
-public interface MyList<T> {
+public interface MyList<T> extends Iterable<T> {
    void add(T element);
    void set(int index, T element);
    void add(int index, T element);
@@ -8,13 +8,13 @@ public interface MyList<T> {
    T get(int index);
    T getFirst();
    T getLast();
-   T remove(int index);
-   T removeFirst();
-   T removeLast();
+   void remove(int index);
+   void removeFirst();
+   void removeLast();
    void sort();
    int indexOf(Object object);
    int lastIndexOf(Object object);
-   boolean equals(Object object);
+   boolean exists(Object object);
    public Object[] toArray();
    void clear();
    int size();
