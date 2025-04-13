@@ -1,24 +1,24 @@
 package models;
 
-public class MyStackArrayList<T> {
+public class MyQueueArrayList<T> {
     private MyArrayList<T> list;
 
-    public MyStackArrayList() {
+    public MyQueueArrayList() {
         list = new MyArrayList<>();
     }
 
-    public void push(T element) {
+    public void enqueue(T element) {
         list.addLast(element);
     }
 
-    public T pop() {
-        T top = list.getLast();
-        list.removeLast();
-        return top;
+    public T dequeue() {
+        T front = list.getFirst();
+        list.removeFirst();
+        return front;
     }
 
     public T peek() {
-        return list.getLast();
+        return list.getFirst();
     }
 
     public boolean isEmpty() {
