@@ -111,12 +111,12 @@ public class MyArrayList<T> implements MyList<T>{
     }
 
     @Override
-    public T removeLast(){
+    public void removeLast(){
         checkCapacity();
         T removedElement=(T) elements[size-1];
         elements[size-1]=null;
         size--;
-        return removedElement;
+
 
     }
 
